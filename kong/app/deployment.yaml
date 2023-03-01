@@ -1,0 +1,33 @@
+apiVersion: apps/v1
+kind: Deployment
+metadata:
+  name: app-kong-wiki
+spec:
+  replicas: 1
+  selector:
+    matchLabels:
+      app: app-kong
+  template:
+    metadata:
+      labels:
+        app: app-kong
+    spec:
+      containers:
+      - name: app-kong
+        image: go
+        ports:
+        - containerPort: 8080
+---
+apiVersion: v1
+kind: Service
+metadata:
+  name: app-kong-service
+  labels:
+    app: app-kong-service
+spec:
+  ports:
+  - port: 8080
+    name: http
+    targetPort: 8080
+  selector:
+    app: app-kong
