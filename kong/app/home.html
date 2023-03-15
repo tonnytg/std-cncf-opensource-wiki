@@ -1,0 +1,15 @@
+<!DOCTYPE html>
+<html>
+<head>
+    <title>Home</title>
+</html>
+<body>
+    <h1>Home</h1>
+    {% if user %}
+        <p>Welcome {{ user.username }}</p>
+    {% else %}
+        <p>Welcome to the home page</p>
+    {% endif %}
+    <p>Welcome to the home page</p>
+</body>
+</html>
